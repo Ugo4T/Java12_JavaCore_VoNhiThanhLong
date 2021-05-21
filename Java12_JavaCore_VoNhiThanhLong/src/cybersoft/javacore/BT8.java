@@ -3,12 +3,24 @@ package cybersoft.javacore;
 import java.util.Scanner;
 
 public class BT8 {
-
+	public static String inputString(String mess,String err1) {
+		String result = "";
+		Scanner sc = new Scanner(System.in);
+		
+		int check=0;
+		do {
+			System.out.print(mess); 
+			result = sc.nextLine();
+			if (result.length()!=0) check=1; else
+				System.out.println(err1);
+			
+		}while (check==0);
+		return result;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Input your string: ");
-		String str = sc.nextLine();
+		
+		String str = inputString("Input your string: ", "Not blank");
 		String[] strs = str.split(" ");
 		String firstLetter="";
 		String anotherLetter="";

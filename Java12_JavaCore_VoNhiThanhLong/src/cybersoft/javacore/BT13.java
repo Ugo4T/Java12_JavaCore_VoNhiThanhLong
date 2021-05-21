@@ -15,7 +15,7 @@ public class BT13 {
 			try {
 				result=Integer.parseInt(str);
 				if (result>0)check=1;
-				else System.out.println("Input positive number");
+				else System.out.println("Must input positive number!");
 				
 			
 			} catch (Exception e) {
@@ -71,10 +71,68 @@ public class BT13 {
 			if (minNega>arr[i] && arr[i]<0) minNega=arr[i];
 			
 		}
-		System.out.println("A: "+ sum/n);
-		System.out.println("B: max= "+max+" ; min= "+min );
-		System.out.println("C: max negattive= "+maxNega+" ; min negative= "+minNega );
-		System.out.println("D: max positive= "+maxPosi+" ; min positive= "+minPosi );
+		System.out.println("A: Average= "+ (double)sum/n);
+		System.out.println("B: Max= "+max+" ; Min= "+min );
+		
+		if (maxNega!=Integer.MIN_VALUE) {
+			System.out.println("C: Max negative= "+maxNega);
+		}
+		else System.out.println("C: Max negative: none");
+		if (minNega!=Integer.MAX_VALUE) {
+			System.out.println("Min nagative= "+minNega);
+		}
+		else System.out.println("Min nagative: none");
+		
+		if (maxPosi>0) {
+			System.out.println("D: Max positive= "+maxPosi);
+		}
+		else System.out.println("D: Max positive: none");
+		if (minPosi!=Integer.MAX_VALUE) {
+			System.out.println("Min positive= "+minPosi);
+		}
+		else System.out.println("Min positive: none");
+		String even="";
+		String odd="";
+		for (int i=0;i<n;i++) {
+			if (arr[i]%2==0) even+=arr[i]+" ";
+			if (arr[i]%2!=0) odd+=arr[i]+" ";
+		}
+		System.out.println("E: Even number: "+even);
+		System.out.println("Odd number: "+odd);
+		//=======
+		int flat=0;
+		int index;
+		do {
+			 index= inputIntPositive("F: Input position: ", "Wrong format");
+			if (index>n) flat=0; else flat=1;
+			System.out.println("index must < "+n);
+		}while (flat==0);
+		
+		int num = inputInt("Input number want to add: ", "Wrong format");
+		int[] newArr= new int[n+1];
+		for (int i=0;i<index;i++) newArr[i]=arr[i];
+		newArr[index]=num;
+		for (int i=index+1;i<n+1;i++) newArr[i]=arr[i-1];
+		System.out.print("New array: ");
+		for (int i=0;i<n+1;i++) {
+			
+			System.out.print(newArr[i]+" ");
+		}
+		System.out.println();
+		//=======
+		
+		do {
+			 index= inputIntPositive("G: Input position: ", "Wrong format");
+			if (index>n) flat=0; else flat=1;
+			System.out.println("index must <= "+n);
+		}while (flat==0);
+		
+		for (int i=index;i<n;i++) newArr[i]=newArr[i+1];
+		System.out.print("New array: ");
+		for (int i=0;i<n;i++) {
+			
+			System.out.print(newArr[i]+" ");
+		}
 		
 	}
 
